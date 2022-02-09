@@ -1,0 +1,94 @@
+body{
+  max-width: 900px;
+  margin: 0px auto;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+footer {
+  margin-bottom: 300px;
+}
+
+h2 {
+  font-weight: 500;
+}
+
+#sections > div{
+  background: white;
+  opacity: .2;
+  margin-bottom: 200px;
+}
+
+#sections div.graph-scroll-active{
+  opacity: 1;
+}
+
+#container{
+  position: relative;
+}
+
+#sections{
+  width: 340px;
+}
+
+#graph{
+  margin-left: 40px;
+  width: 500px;
+  position: sticky;
+  top: 0px;
+  float: right;
+  background-color: #D0D2CE;
+}
+
+/*@media (max-width: 925px)  {
+  #graph{
+    width: 100%;
+    margin-left: 0px;
+    float: none;
+  }
+
+  #sections{
+    position: relative;
+    margin: 0px auto;
+    padding-top: 400px;
+  }
+}*/
+
+@media (max-width: 925px)  {
+  #graph{
+    width: 100%;
+    margin-left: 0px;
+    float: none;
+  }
+
+  #sections{
+    width: auto;
+    position: relative;
+    margin: 0px auto;
+  }
+
+  #sections > div{
+    background: rgba(255,255,255,.5);
+    padding: 10px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    margin-bottom: 80vh;
+  }
+
+  pre{
+    overflow: hidden;
+  }
+
+  h1{
+    margin: 10px;
+  }
+}
+
+.urban {
+  font-weight: bold;
+  color: #16343E;
+}
+
+.rural {
+  font-weight: bold;
+  color: #00835D;
+}
