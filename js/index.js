@@ -71,8 +71,7 @@ function render() {
   d3.queue()
   .defer(d3.json, "data/counties-10.json")
   .defer(d3.json, "data/ga_tract_v02.json")
-  // .defer(d3.json, "data/ga_blk_group.json")
-  .defer(d3.json, "data/ga_blk_v02_with_rurality.json")
+  .defer(d3.json, "data/oconee_blk_topojson.json")
   .defer(d3.csv, "data/ga_tract_rurality.csv")
   .await(function(error, json1, json2, json4, csv1) {
 
@@ -106,7 +105,6 @@ function render() {
 
 
     // Add in tracts
-    console.log(json2);
     var tracts = topojson.feature(json2, json2.objects.tl_2018_13_tract).features;
     tracts = tracts.filter(function(d) { return d.properties.COUNTYFP == "219"; });
 
@@ -129,8 +127,10 @@ function render() {
        .attr("stroke-width", 3)
        .attr("opacity", 0);
 
+
+    console.log("json4 ", json4);
     // Add in blocks
-    var blks = topojson.feature(json4, json4.objects.tl_2018_13_tabblock10).features;
+    var blks = topojson.feature(json4, json4.objects.oconee_blk_geojson).features;
 
     // Filter to the tract
     blks = blks.filter(function(d) { return d.properties.COUNTYFP10 == "219"; });
@@ -359,7 +359,6 @@ function render() {
             .duration(500)
             .attr("opacity", 1)
             .attr("fill", function(d) {
-              console.log(d);
               if (d.id == "13219") {
                 return urban_color;
               }
