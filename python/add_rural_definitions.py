@@ -4,10 +4,10 @@ import pandas as pd
 
 print('hello')
 
-with open('../data/ga_blk_v02.json', 'r') as f:
+with open('../data-raw/ga_blk_v02.json', 'r') as f:
     data = json.load(f)
 
-ga_tract_rurality = pd.read_csv('../data/ga_tract_rurality.csv', dtype = {"geoid": "category"})
+ga_tract_rurality = pd.read_csv('../data-raw/ga_tract_rurality.csv', dtype = {"geoid": "category"})
 
 blocks = data["objects"]["tl_2018_13_tabblock10"]["geometries"]
 
@@ -28,5 +28,5 @@ for i in range(0, len(blocks)):
 
 data["objects"]["tl_2018_13_tabblock10"]["geometries"] = blocks
 
-with open('../data/ga_blk_v02_with_rurality.json', 'w') as outfile:
+with open('../data-raw/ga_blk_v02_with_rurality.json', 'w') as outfile:
     json.dump(data, outfile)
