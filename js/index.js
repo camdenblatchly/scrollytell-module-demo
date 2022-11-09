@@ -1,7 +1,4 @@
-
 var oldWidth = 0;
-var rural_color = "#00835D";
-var urban_color = "#16343E";
 
 function render() {
   if (oldWidth == innerWidth) return
@@ -9,7 +6,6 @@ function render() {
 
   var width = height = d3.select('#graph').node().offsetWidth
   var r = 40
-
 
   if (innerWidth <= 925){
     width = innerWidth
@@ -30,14 +26,10 @@ function render() {
         .attr("width", width)
         .attr("height", height);
   
-  d3.json("data/counties-10.json")
+  d3.json("https://rwjf-public.s3.amazonaws.com/counties-10.json")
   .then(function(data) {
-
-    console.log("D is ", data);
     
-    // Add states and counties
-    var counties = topojson.feature(data, data.objects.counties).features;
-    counties = counties.filter(function(d) { return d.id.slice(0,2) == "13"});
+    // Add states
     var states = topojson.feature(data, data.objects.states).features;
 
     svg.selectAll(".states")
@@ -50,11 +42,8 @@ function render() {
        .attr("fill", "pink")
        .attr("stroke-width", 1);
 
-
   });
 
-  //var fill_colors = ["#16343E", "#456E66", "#74A88D", "#A3E2B5"];
-  var fill_colors = ["#753984", "#234FBF", "#E74F2A", "#259299"];
 
   var gs = d3.graphScroll()
       .container(d3.select('.scrollytelling__container'))
