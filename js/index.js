@@ -46,7 +46,7 @@ function render() {
 
 
   var gs = d3.graphScroll()
-      .container(d3.select('.scrollytelling__container'))
+      .container(d3.select('.scrollytell__container'))
       .graph(d3.selectAll('#graph'))
       .eventId('uniqueId1')  // namespace for scroll and resize events
       .sections(d3.selectAll('.data-section'))
